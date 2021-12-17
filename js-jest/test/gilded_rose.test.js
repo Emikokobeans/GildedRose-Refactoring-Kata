@@ -138,25 +138,25 @@ describe("Aged Brie", () => {
   })
 });
 
-// describe("Sulfuras, Hand of Ragnaros", () => {
-//   test("quality does not decrease", () => {
-//     const sulfuras = new Shop([new Item('Sulfuras, Hand of Ragnaros', 0, 80)]);
-//     const item = sulfuras.updateQuality();
-//     expect(item[0].quality).toBe(80)
-//   });
-//   test("sellIn does not decrease", () => {
-//     const sulfuras = new Shop([new Item('Sulfuras, Hand of Ragnaros', 0, 80)]);
-//     const item = sulfuras.updateQuality();
-//     expect(item[0].sellIn).toBe(0)
-//   });
-//   test("sellIn does not change from 0", () => {
-//     const sulfuras = new Shop([new Item('Sulfuras, Hand of Ragnaros', 2, 80)]);
-//     const item = sulfuras.updateQuality();
-//     expect(item[0].sellIn).toBe(0)
-//   });
-//   test("quality does not change form 80", () => {
-//     const sulfuras = new Shop([new Item('Sulfuras, Hand of Ragnaros', 0, 70)]);
-//     const item = sulfuras.updateQuality();
-//     expect(item[0].quality).toBe(70)
-//   });
-// })
+describe("Sulfuras, Hand of Ragnaros", () => {
+  test("quality does not decrease", () => {
+    const sulfuras = new Shop([new Item('Sulfuras, Hand of Ragnaros', 0, 80)]);
+    const item = sulfuras.updateQuality();
+    expect(item[0].quality).toBe(80)
+  });
+  test("sellIn does not decrease", () => {
+    const sulfuras = new Shop([new Item('Sulfuras, Hand of Ragnaros', 0, 80)]);
+    const item = sulfuras.updateQuality();
+    expect(item[0].sellIn).toBe(0)
+  });
+  test("sellIn value does not change from original input", () => {
+    const sulfuras = new Shop([new Item('Sulfuras, Hand of Ragnaros', 2, 80)]);
+    const item = sulfuras.updateQuality();
+    expect(item[0].sellIn).toBe(2)
+  });
+  test("quality does not change form original input", () => {
+    const sulfuras = new Shop([new Item('Sulfuras, Hand of Ragnaros', 0, 70)]);
+    const item = sulfuras.updateQuality();
+    expect(item[0].quality).toBe(70)
+  });
+})

@@ -10,7 +10,7 @@ class Shop {
     this.items = items.map((item) => {
       switch (item.name) {
         case 'Sulfuras, Hand of Ragnaros': 
-          return new Legendary(item.name, item.quality);
+          return new Legendary(item.name, item.sellIn, item.quality);
         case 'Aged Brie': 
           return new AgedBrie(item.sellIn, item.quality);
         default: 

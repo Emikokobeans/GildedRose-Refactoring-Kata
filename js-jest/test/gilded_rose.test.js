@@ -159,4 +159,50 @@ describe("Sulfuras, Hand of Ragnaros", () => {
     const item = sulfuras.updateQuality();
     expect(item[0].quality).toBe(70)
   });
+});
+
+describe("Backstage Pass", () => {
+  test("sellIn decreases by 1", () => {
+    const backstagePass = new Shop([new Item('Backstage passes to a TAFKAL80ETC concert', 11, 5)]);
+    const item = backstagePass.updateQuality();
+    expect(item[0].sellIn).toBe(10)
+  });
+  test("quality increases by 1 when there are 11 days or more", () => {
+    const backstagePass = new Shop([new Item('Backstage passes to a TAFKAL80ETC concert', 11, 5)]);
+    const item = backstagePass.updateQuality();
+    expect(item[0].quality).toBe(6)
+  })
+  test("quality increases by 2 when there are 10 days or less", () => {
+    const backstagePass = new Shop([new Item('Backstage passes to a TAFKAL80ETC concert', 10, 5)]);
+    const item = backstagePass.updateQuality();
+    expect(item[0].quality).toBe(7)
+  })
+  test("quality increases by 3 when there are 5 days or less", () => {
+    const backstagePass = new Shop([new Item('Backstage passes to a TAFKAL80ETC concert', 5, 5)]);
+    const item = backstagePass.updateQuality();
+    expect(item[0].quality).toBe(8)
+  })
+  test("quality becomes 0 after the concert", () => {
+    const backstagePass = new Shop([new Item('Backstage passes to a TAFKAL80ETC concert', 0, 5)]);
+    const item = backstagePass.updateQuality();
+    expect(item[0].quality).toBe(0)
+  })
+});
+
+describe("Conjured Items", () => {
+  test("sellIn decreases by 1", () => {
+    const gildedRose = new Shop([new Item("Conjured Item", 1, 2)]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].sellIn).toBe(0);
+  })
+  test("quality decreases twice as fast as a normal item", () => {
+    const gildedRose = new Shop([new Item("Conjured Item", 2, 2)]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].quality).toBe(0);
+  });
+  test("quality decreases twice as fast after 0 as a normal item", () => {
+    const gildedRose = new Shop([new Item("Conjured Item", 0, 4)]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].quality).toBe(0);
+  })
 })

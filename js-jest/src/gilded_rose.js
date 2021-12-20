@@ -2,6 +2,8 @@ const {
   NormalItem,
   AgedBrie,
   Legendary,
+  BackstagePass,
+  ConjuredItem,
 } = require('./item'); 
 
 
@@ -13,6 +15,10 @@ class Shop {
           return new Legendary(item.name, item.sellIn, item.quality);
         case 'Aged Brie': 
           return new AgedBrie(item.sellIn, item.quality);
+        case 'Backstage passes to a TAFKAL80ETC concert':
+          return new BackstagePass(item.sellIn, item.quality)
+        case 'Conjured Item':
+          return new ConjuredItem(item.name, item.sellIn, item.quality)
         default: 
           return new NormalItem(item.name, item.sellIn, item.quality);
       }
